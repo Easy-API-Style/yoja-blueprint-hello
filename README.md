@@ -24,9 +24,9 @@ yoja-blueprint-hello/
 ## Prerequisites
 
 - Java 25+
-- yoja dependencies available in Maven local (`~/.m2`):
-  - `com.easygoingapi:yoja-web:0.0.0-SNAPSHOT`
-  - `com.easygoingapi:yoja-http-server:0.0.0-SNAPSHOT`
+- yoja dependencies:
+  - `com.easygoingapi:yoja-web:VERSION`
+  - `com.easygoingapi:yoja-http-server:VERSION`
 
 ## Gradle commands
 
@@ -50,6 +50,12 @@ yoja-blueprint-hello/
 Once running, open: **http://localhost:9090/index.html**
 
 The page calls `GET /hello` and displays the response (`hello, yoja`).
+
+## Frontend as a JAR dependency
+
+yoja treats frontend assets (JS, CSS, HTML) as first-class Maven/Gradle artifacts. A dependency like `com.easygoingapi:yoja-web:VERSION` is a standard JAR that happens to bundle a JavaScript framework inside. The server unpacks and serves those resources at runtime — no npm registry, no separate CDN, no copy step.
+
+This means frontend libraries travel through the exact same dependency management pipeline as backend code: versioned, resolved, cached, and declared in `build.gradle` or `pom.xml`. A team can publish a shared component library as a JAR and consumers get it with a single dependency line, just like any other library.
 
 ## How it works
 
